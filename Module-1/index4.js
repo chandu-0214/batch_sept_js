@@ -42,3 +42,4 @@ do {
     console.log(i)
     i=i+1 //i++
 } while(i<10)
+
