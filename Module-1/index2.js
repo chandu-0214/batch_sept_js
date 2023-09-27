@@ -23,7 +23,8 @@ console.log(2*4)
 console.log(9=='9')  // losse equal (doesnot compares data type)
 console.log(9===9)  // strict equal (do compares data type)
 
-console.log(9 != 10)
+console.log(9 != 10)    // not equal
+console.log(9>=9)
 
 let value = 5
 value--
