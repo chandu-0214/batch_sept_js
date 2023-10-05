@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div id="root">
+        <h2>Student Registration form</h2>
+        <form id="myForm">
+            <div>
+                <label for="input">Name</label>
+                <input id='input' type="type" placeholder="enter your name"/>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id='email'type="email" placeholder="enter your Email"/>
+            </div>
+            <div>
+                <label for="number">Contact No. </label>
+                <input id='number' type="number" placeholder="enter your Contact no."/>
+            </div>
+            <div>
+                <label for="dob">Date Of Birth </label>
+                <input id='dob' type="date" placeholder="enter your DOB"/>
+            </div>
+            <div>
+                <p>Gender</p>
+                <div>
+                    <div>
+                        <label for="GenderMale">Male </label>
+                        <input id='GenderMale' type="radio" value="Male" name="gender" checked/>
+                    </div>
+                    <div>
+                        <label for="GenderFeMale">Female </label>
+                        <input id='GenderFeMale' type="radio" value="Female" name="gender"/>
+                    </div>
+                    <div>
+                        <label for="GenderOthers">Others </label>
+                        <input id='GenderOthers' type="radio" value="others" name="gender"/>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>Role</p>
+                <select id="role">
+                    <option value="Front-End Developer">Front-End Developer</option>
+                    <option value="Back-End Developer">Back-End Developer</option>
+                    <option selected value="Full-stack Developer">Full-stack Developer</option>
+                    <option value="Database Engineer">Database Engineer</option>
+
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
