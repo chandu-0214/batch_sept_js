@@ -87,8 +87,6 @@ const handleformSubmit = (event)=>{
         alert('Form is Invalid')
     }
      
-
-
 }
 myFormId.addEventListener('submit',handleformSubmit)
 
@@ -108,10 +106,9 @@ const handleNameValidation=(event)=>{
     console.log(valueInTheName)
 
 }
-
-
 nameEle.addEventListener('blur',handleNameValidation)
 
-
+// 1. fetch 
+// 2. download the form detials eg. pdf,excel,csv(comma seprated values)
 
 
