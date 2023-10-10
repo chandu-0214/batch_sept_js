@@ -67,6 +67,18 @@ const validation=()=>{
     return isnameValid && isEmailValid && isContactValid && isDobValid
 
 }
+function exportToCSV(data) {
+    console.log('called')
+    const csv = Object.keys(data[0]).join(",") + "\n" +
+                data.map(item => Object.values(item).join(",")).join("\n");
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute('download', 'data.csv');
+    document.body.appendChild(link);
+    link.click();
+    // document.body.removeChild(link);
+  }
 const handleformSubmit = (event)=>{
     event.preventDefault()  // It stops all the default activites which was done by browser
     const isValid = validation()
@@ -79,6 +91,7 @@ const handleformSubmit = (event)=>{
         emailEle.value=''
         numberEle.value=''
         dobEle.value=''
+        exportToCSV(dataRuntimeForm)
         
 
     }

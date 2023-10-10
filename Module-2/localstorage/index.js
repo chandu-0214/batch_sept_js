@@ -33,14 +33,16 @@
 let textAreaEl = document.getElementById('textarea')
 let saveButtonEl = document.getElementById('save')
 let deleteButtonEl = document.getElementById('delete')
+let undoButtonEl = document.getElementById('undo')
 
 
 const handleSave=()=>{
     const userInputStory = textAreaEl.value
     if(userInputStory!==''){
         localStorage.setItem("Story",JSON.stringify(userInputStory))
-        console.log(userInputStory)
         alert("Your Story is successfully saved")
+        localStorage.removeItem('deletedStory')
+
     }
     else{
         alert("Write a story")
@@ -56,22 +58,26 @@ else{
 }
 
 const handleDelete = ()=>{
-    let storedValue = JSON.parse(localStorage.getItem('Story'))
+    let deletedStory = localStorage.getItem("Story")
+    let parsedDeletedStory = JSON.parse(deletedStory)
     textAreaEl.value=''
     localStorage.removeItem('Story')
-    localStorage.clear()
-    localStorage.setItem("deletedStory",JSON.stringify(storedValue))
+    localStorage.setItem('deletedStory',JSON.stringify(parsedDeletedStory))
+}
+
+const handleUndo=()=>{
+    let storedStory = localStorage.getItem("deletedStory")
+    if(storedStory!==null){
+        textAreaEl.value = JSON.parse(storedStory)
+    }
+    else{
+        textAreaEl.value=''
+    }
 }
 
 saveButtonEl.addEventListener('click',handleSave)
 deleteButtonEl.addEventListener('click',handleDelete)
-
-
-
-
-
-
-
+undoButtonEl.addEventListener('click',handleUndo)
 
 
 

@@ -1,0 +1,18 @@
+notes 
+https://www.isro.gov.in/careers/?exp=2&role=dev
+protocol,domain name, paths, paths,query parameter 
+
+
+Request = > message sent by client to server
+Response = > message sent by server to client
+
+
+HTTP Request = 1. start line(url,http method,version)
+                2. Headers(send to vital information,extra information)
+                3. body (Your data)
+
+HTTP Method => GET(read the data),POST(post the data),PUT(update the data),DELETE (delete the data)     
+
+HTTP Response = 1. status line(status code,status text,version)
+                2. Headers(send to vital information,extra information)
+                3. body (data)
