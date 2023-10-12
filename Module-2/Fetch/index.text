@@ -16,3 +16,4 @@ HTTP Method => GET(read the data),POST(post the data),PUT(update the data),DELET
 HTTP Response = 1. status line(status code,status text,version)
                 2. Headers(send to vital information,extra information)
                 3. body (data)
+ 'https://restcountries.com/v2/all'
