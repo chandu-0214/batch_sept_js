@@ -60,25 +60,40 @@ const validation=()=>{
 
     let isnameValid = dataRuntimeForm.name.length>5 
     let isEmailValid = dataRuntimeForm.email.includes("@")
-    let isContactValid = dataRuntimeForm.contactNo.length===10
+    let isContactValid = dataRuntimeForm.contactNo.length>1
     let isDobValid= dataRuntimeForm.dob !==""
     console.log(isnameValid,isEmailValid,isContactValid,isDobValid)
 
     return isnameValid && isEmailValid && isContactValid && isDobValid
 
 }
-function exportToCSV(data) {
-    console.log('called')
-    const csv = Object.keys(data[0]).join(",") + "\n" +
-                data.map(item => Object.values(item).join(",")).join("\n");
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.setAttribute('download', 'data.csv');
+function convertObjectToCSV(objArray) {
+    const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+
+    for (let i = 0; i < array.length; i++) {
+        let line = '';
+        for (const index in array[i]) {
+            if (line !== '') line += ',';
+            line += array[i][index];
+        }
+        str += line + '\r\n';
+    }
+
+    return str;
+}
+
+function downloadCSV(data, filename) {
+    const csvContent = "data:text/csv;charset=utf-8," + convertObjectToCSV(data);
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", filename);
     document.body.appendChild(link);
     link.click();
-    // document.body.removeChild(link);
-  }
+    document.body.removeChild(link);
+}
+
 const handleformSubmit = (event)=>{
     event.preventDefault()  // It stops all the default activites which was done by browser
     const isValid = validation()
@@ -87,11 +102,13 @@ const handleformSubmit = (event)=>{
         // fetch call
         alert('Form is Successfully submitted')
         // below lines used to make the form empty after submitting successfully
-        nameEle.value=''
-        emailEle.value=''
-        numberEle.value=''
-        dobEle.value=''
-        exportToCSV(dataRuntimeForm)
+        //downloadCSV([dataRuntimeForm], 'data.csv');
+downloadPDF();
+
+        // nameEle.value=''
+        // emailEle.value=''
+        // numberEle.value=''
+        // dobEle.value=''
         
 
     }
